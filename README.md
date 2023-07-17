@@ -32,21 +32,30 @@ Para poder inicializar as versões difernte faça os seguinte passos:
 
 4)  Versao Swing 1-0 ou 2-0 permite fazer atulização das moedas
 
+
 -----------------------------------------------
-TELA DA VERSÃO CONSOLE
+TELAS DA VERSÃO SWING 2.0  -  CALCULADORA
+-----------------------------------------------
+<div align="center">
+<img src="https://github.com/spavan99/challenge-one-conversor-br/assets/79721716/6b39ead4-1641-4e6c-bd01-ffd044822ca5" width="800px" height="300px"/ >
+</div>
+
+-----------------------------------------------
+TELAS DA VERSÃO SWING 1.0 
 -----------------------------------------------
 
 <div align="center">
- <img src="https://github.com/spavan99/challenge-one-conversor-br/issues/1#issue-1807434285" />
+ <img src="https://github.com/spavan99/challenge-one-conversor-br/assets/79721716/5b065c63-5505-4959-8d4b-142acc549f23" width="800px" height="300px" />
 </div>
 
+-----------------------------------------------
+TELAS DA VERSÃO CONSOLE
+-----------------------------------------------
 
------------------------------------------------
-TELA DA VERSÃO SWING 2.0  -  CALCULADORA
------------------------------------------------
 <div align="center">
-<img src="https://github.com/spavan99/challenge-one-conversor-br/assets/79721716/6b39ead4-1641-4e6c-bd01-ffd044822ca5"/ width="800px" 	height="500px" >
+ <img src="https://github.com/spavan99/challenge-one-conversor-br/assets/79721716/8dc14854-67d8-480e-a80e-4740c8d0e737" width="800px" height="300px" />
 </div>
+
 
 
 
