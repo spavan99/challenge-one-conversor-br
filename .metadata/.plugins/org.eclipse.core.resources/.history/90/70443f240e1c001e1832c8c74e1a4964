@@ -1,0 +1,33 @@
+package Moeda;
+
+import java.util.List;
+
+public class MoedasDisponiveis {
+	
+	// retorna as moedas disponiveis para conversao
+	MoedasTipos _tipomoedas;
+	
+	public  MoedasDisponiveis() {
+        System.out.println( _tipomoedas.Dolar.getPais());
+	}
+	
+    // depoois ver necessario
+	public static void getAllMoedasDisponiveis() {
+		 for (MoedasTipos moedas : MoedasTipos.values()) {
+	            System.out.println(moedas);
+	        }
+		
+	}
+	
+    // retorna as moedas disponiveis em um string com |
+	public static String  getStringAllMoedasDisponiveis() {
+		String nret = "|"; 
+		for (MoedasTipos moedas : MoedasTipos.values()) {
+	        nret = nret + moedas + "|";
+	    }
+        return nret.toUpperCase();
+		
+	}
+
+	
+}

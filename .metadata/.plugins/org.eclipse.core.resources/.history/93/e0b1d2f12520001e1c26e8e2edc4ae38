@@ -1,0 +1,127 @@
+package UICalcCoonversorSwing;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import CalcConversorLog.MemoriaCalculo;
+import CalcConversorLog.MemoriaObservador;
+import Conversor.GlobalVars;
+import UIGeral.BotaoGeral;
+
+public class CalcDados extends JPanel implements MemoriaObservador{
+	
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars();
+
+	// criar poder acessar
+ 	private JTextField valorOriginal = new JTextField(25);
+ 	private JTextField valorDestino = new JTextField(25);
+	
+	private enum display{
+		DISPLAY_ORIGEM, DISPLAY_DESTINO;
+	}
+	
+	public CalcDados()  {
+        // rgistra tem intersse nas notificacoes
+		MemoriaCalculo.startMemo().adionarObservador(this);
+		
+		setBackground( gbl.CALC_COR_CLARA);
+		montaLayout();
+		
+	}
+
+	@Override
+	public void valorAlterado(String novoValor) {
+		// enviar para o display
+        // valor original
+     	valorOriginal.setText(novoValor);
+     	  		
+		
+		System.out.println(novoValor);
+	
+	}
+	
+    public void montaLayout() {
+    	
+		// set tipo layout
+		setLayout( new GridLayout(1,2));
+       // adciona botoes
+		adcionaItensMenu( "Origem", "Dolar", Color.RED, display.DISPLAY_ORIGEM );
+		adcionaItensMenu( "Destino", "Euro", Color.BLUE, display.DISPLAY_DESTINO);
+    }
+
+    public void adcionaItensMenu(String msg, String dados, Color cor, display visor) {
+    	
+       	JPanel panel = new JPanel();
+        panel.setBackground(cor);
+        panel.setLayout(null);
+       // panel.setLayout(new FlowLayout());
+        
+        JLabel texto = new JLabel();
+    	texto.setForeground(Color.WHITE);
+    	texto.setText(msg);
+    	texto.setFont( new Font(gbl.TXT_FONTE, gbl.TXT_STILUS, 20) );
+      	texto.setSize(200, 30);
+    	texto.setLocation(10, 3);
+    	panel.add(texto);
+ 
+        JLabel ctexto = new JLabel();
+     	ctexto.setForeground(Color.WHITE);
+     	ctexto.setText(dados);
+     	ctexto.setFont( new Font(gbl.TXT_FONTE, gbl.TXT_STILUS, 20) );
+    	ctexto.setSize(200, 30);
+    	ctexto.setLocation( 180, 30);
+     	panel.add(ctexto);
+
+        if( visor == display.DISPLAY_ORIGEM) {
+           	valorOriginal.setText(MemoriaCalculo.startMemo().getTXTvrOrigem());
+         	valorOriginal.setFont( new Font(gbl.TXT_FONTE, gbl.TXT_STILUS, 25) );
+         	valorOriginal.setEditable(false);
+         	valorOriginal.setSize(200, 30);
+        	valorOriginal.setLocation(35, 65);
+           	valorOriginal.setText(MemoriaCalculo.startMemo().getTXTvrOrigem());
+        	panel.add(valorOriginal);
+        }else {
+           	valorDestino.setText(MemoriaCalculo.startMemo().getTXTvrOrigem());
+         	valorDestino.setFont( new Font(gbl.TXT_FONTE, gbl.TXT_STILUS, 25) );
+         	valorDestino.setEditable(false);
+         	valorDestino.setSize(200, 30);
+        	valorDestino.setLocation(35, 65);
+           	valorDestino.setText(MemoriaCalculo.startMemo().getTXTvrOrigem());
+        	panel.add(valorDestino);
+        }
+     	/*
+     	// subtituot por um label 
+     	JTextField valor = new JTextField(25);
+     	//ctexto.setForeground(Color.WHITE);
+        if( visor == display.DISPLAY_ORIGEM) {
+        	valor.setText(MemoriaCalculo.startMemo().getTXTvrOrigem());
+        }else {
+          	valor.setText(MemoriaCalculo.startMemo().getTXTvrDestino());
+        }
+     	valor.setFont( new Font(gbl.TXT_FONTE, gbl.TXT_STILUS, 25) );
+     	valor.setEditable(false);
+     	//valor.setEnabled(false);
+     	valor.setSize(200, 30);
+    	valor.setLocation(35, 65);
+        panel.add(valor);
+        */
+        
+       	// adicona o painel
+      	this.add(panel);
+    }
+
+}
+
+
+
+
+

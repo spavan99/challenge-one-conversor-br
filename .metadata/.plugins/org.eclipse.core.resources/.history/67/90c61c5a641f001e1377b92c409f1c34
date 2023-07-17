@@ -1,0 +1,26 @@
+package UICalcCoonversorSwing;
+
+import java.awt.GridLayout;
+
+import Conversor.GlobalVars;
+
+public class CalcConversores {
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars();
+
+	public CalcConversores {
+		setBackground(Color.RED);
+		
+		// cria botoes para acessar menu
+		//setLayout( new GridLayout(2,2));
+        // adciona botoes
+		//adcionaItensMenu( "Moedas", gbl.COR_CLARA);
+		//adcionaItensMenu( "IMC", gbl.COR_CONTRASTE);
+		//adcionaItensMenu( "Medidas", gbl.COR_CLARA);
+		//adcionaItensMenu( "Pesos", gbl.COR_CONTRASTE);
+		
+		
+	}
+		
+	
+}

@@ -1,0 +1,77 @@
+package UISwing;
+
+import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+//import java.awt.*;
+//import javax.swing.*;
+
+public class appConversorSwing extends JFrame {
+
+	// contrutor
+	public appConversorSwing() {
+//		new appConversorSwing();
+        
+		startApp();
+	}
+	
+
+	public void startApp() {
+		new appConversorSwing();
+		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		setLocationRelativeTo(null);
+	    setSize(600,600);
+		
+	    organizarLayout();		
+        setVisible(true);
+	
+	}	
+	
+	
+	public void startApp2() {
+      
+		JFrame janela = new JFrame("Oracle/Alura - Conversor ");
+
+		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		//janela.setLocationRelativeTo(null);
+	    janela.setSize(600,600);
+
+	    setLayout(new BorderLayout());
+		
+		// criar menu
+		appMenuSwing menu = new appMenuSwing();
+		menu.setPreferredSize( new Dimension(150, 600));
+        janela.add( menu, BorderLayout.WEST); 
+
+		// criar dados
+        appDadosSwing dados = new appDadosSwing();
+		dados.setPreferredSize( new Dimension(450, 600));
+        janela.add( dados, BorderLayout.CENTER); 
+		
+        janela.setVisible(true);
+	    
+		//Painel meuPainel = new Painel();
+	    //janela.add(meuPainel);
+        
+    }
+
+	private void organizarLayout() {
+
+		// set tipo layout
+		setLayout(new BorderLayout());
+		
+		// criar menu
+		appMenuSwing menu = new appMenuSwing();
+		menu.setPreferredSize( new Dimension(150, 600));
+        this.add( menu, BorderLayout.WEST); 
+
+		// criar dados
+        appDadosSwing dados = new appDadosSwing();
+		dados.setPreferredSize( new Dimension(450, 600));
+        this.add( menu, BorderLayout.CENTER); 
+		
+	}
+}
+

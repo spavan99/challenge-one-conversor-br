@@ -1,0 +1,29 @@
+package UISwing;
+
+import javax.swing.JPanel;
+
+public class appFramePDSwing extends JPanel{
+
+	private int largura = 600;
+	private int altura = 300;
+	
+	
+	public appFramePDSwing() {
+		
+	}
+	
+	public appFramePDSwing(int largura, int altura) {
+		this.largura = largura;
+		this.altura = altura;
+		
+	}
+	
+	private void start() {
+		
+		
+		
+		
+	}
+	
+	
+}

@@ -1,0 +1,85 @@
+package Moeda;
+
+import java.util.List;
+
+public enum MoedasTipos {
+
+  // tipo de moedas
+  //nome  nr   simb  Iso3217  Pais
+	Real(1, "R$", "BR", "Brasil"),
+	Dolar(2, "$", "USD", "Estado Unidos"),
+	Euro(3, "E", "EUR", "União Europeia");
+	
+    private final int numero;
+    private final String simbolo;
+    private final String iso;
+    private final String pais;
+    
+    MoedasTipos(int numero, String simbolo, String iso, String pais) {
+        this.numero = numero;
+        this.simbolo = simbolo;
+        this.iso = iso;
+        this.pais = pais;
+    }
+
+    public int getNumero() {
+        return this.numero;
+    }
+    
+    public String getSimbolo() {
+        return this.simbolo;
+    }
+	
+    public String getIso() {
+        return this.iso;
+    }
+
+    public String getPais() {
+        return this.pais;
+    }
+
+
+/*    
+    public static List<Character> getAlMoedas() {
+        List<Character> lista = new List<Character>();
+
+        for (MoedasTipos lista :values())
+        	lista.add(lista.toString().toCharArray()[0]);
+
+        return lista;
+    }
+    
+*/    
+    
+    
+    
+}
+
+
+
+/*
+public enum AlgarismoRomano {
+
+    I(1), V(5), X(10), L(50), C(100), D(500), M(1000);
+
+    private int numeroArabico;
+
+    private AlgarismoRomano(int numeroArabico) {
+        this.numeroArabico = numeroArabico;
+    }
+
+    public static int retornarNumeroArabico(char numeroRomano) {
+        return valueOf(String.valueOf(numeroRomano)).numeroArabico;
+    }
+
+    public static List<Character> getAlgarismosRomanos() {
+        List<Character> algarismos = new ArrayList<Character>();
+
+        for (AlgarismoRomano algarismo : values())
+            algarismos.add(algarismo.toString().toCharArray()[0]);
+
+        return algarismos;
+    }
+
+}
+*/

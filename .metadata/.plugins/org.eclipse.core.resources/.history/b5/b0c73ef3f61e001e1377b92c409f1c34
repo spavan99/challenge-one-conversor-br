@@ -1,0 +1,63 @@
+package UISwing;
+
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import Conversor.GlobalVars;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FlowLayout;
+
+
+public class TituloSwing extends JPanel {
+
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+	
+    private String titulo = "";
+    private JLabel label;
+    
+	private Color corfundo = gbl.COR_TITULO;
+	private Color cortxt = gbl.COR_TXTWHITE;
+	private int tamfonte = gbl.TXT_SIZE;
+	private String fonte = gbl.TXT_FONTE;
+    
+    
+    
+	public TituloSwing(String pmsg, Color pcorfundo) {
+	}
+    
+    
+	public TituloSwing(String pmsg) {
+		this.titulo = pmsg;
+		setBackground(gbl.COR_TITULO);
+		label = new JLabel( this.titulo);
+    	label.setForeground(Color.WHITE);
+    	label.setFont( new Font( "curier", Font.PLAIN, 16 ));     
+		
+    	setLayout( new FlowLayout(FlowLayout.CENTER));
+
+    	add(label);
+	}
+
+	
+	
+	private void config() {
+
+		setBackground(this.corfundo);
+
+		
+		 this.setFont( new Font( fonte, Font.PLAIN, tamfonte ));     
+		 this.setOpaque(true);
+		 if( corfundo != null ) {
+   		 this.setBackground(corfundo);
+        }
+        this.setForeground( cortxt);
+		 this.setBorder( BorderFactory.createLineBorder(Color.BLACK));
+	}
+
+	
+	
+}

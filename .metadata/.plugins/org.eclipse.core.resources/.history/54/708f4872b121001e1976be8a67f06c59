@@ -1,0 +1,134 @@
+package PadraoConversor;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import Moeda.MoedasTipos;
+import Pesos.PesosTipo;
+
+public class PadraoConversor {
+
+	// moeda base cotacao 1 unidade para todas as demais	
+	//static MoedasTipos moedaBase = MoedasTipos.Dolar; 
+
+	private String dadosOrigem;
+	private String dadosDestino;
+    private double valorConverter;
+    private double valorFinal;
+    private int  nrCasasDecimal = 4;
+	public static List<String> _dados = new ArrayList<>(); 
+	public static List<Double> _cotacaodados = new ArrayList<>(); 
+
+
+    public void setnrCasasDecimal( int valor) {
+    	this.nrCasasDecimal = valor;
+    }
+
+	public void setDadosOrigem( String valor) {
+    	this.dadosOrigem = valor;
+    }
+	
+    public void setDadosDestino( String valor) {
+    	this.dadosDestino = valor;
+    }
+
+    public void setvalorConverter( Double valor) {
+    	this.valorConverter = valor;
+    }
+    
+    public void setvalorFinal( Double valor) {
+    	this.valorFinal = valor;
+    }
+
+    public String getDadosOrigem() {
+    	return this.dadosOrigem;
+    }
+	
+    public String getDadosDestino() {
+    	return this.dadosDestino;
+    }
+
+    public Double getValorConverter() {
+    	return this.valorConverter;
+    }
+   
+    public Double getValorFinal() {
+    	return this.valorFinal;
+    }
+
+    
+    public String formatarNumero(double valor, int casas) {
+     	String ndecimal = "#,###.";
+    	// acrecenta numero casas decimal
+    	for( int i = 0; i < casas; i++) {
+    		ndecimal = ndecimal + "#";
+    	}
+    	return  new DecimalFormat(ndecimal).format(valor);
+    	
+    }
+    
+    public String dadosFormatadoConverter() {
+    	return (formatarNumero(dadosConverter(), nrCasasDecimal));
+    }
+
+    public Double dadosConverter() {
+        double indOrigem = 0;
+        double indDestino = 0;
+         
+        // pegar a cotaçao       
+        for( int i = 0; i < _dados.size(); i++) {
+        	// origem
+        	if( _dados.get(i).equals(dadosOrigem) ) {
+                indOrigem = _cotacaodados.get(i);        		
+        	}
+           	// destino
+        	if( _dados.get(i).equals(dadosDestino) ) {
+                indDestino = _cotacaodados.get(i);        		
+        	}
+        }
+        this.valorFinal = ((this.valorConverter / indOrigem ) * indDestino);
+        
+        System.out.println( "****************************************************");
+        System.out.println( ">>>>  dados origem  "+ this.dadosOrigem);
+        System.out.println( ">>>>  dados destino  "+ this.dadosDestino);
+        System.out.println( ">>>>  vr origem  "+ this.valorConverter);
+        System.out.println( ">>>>  vr final  "+ this.valorFinal);
+        System.out.println( ">>>>  ind origem  "+ indOrigem);
+        System.out.println( ">>>>  ind destubi  "+ indDestino);
+        System.out.println( "****************************************************");
+        
+        return valorFinal;
+         
+    }
+
+	// RETONA LISTA COM TODAS A UNIDADE DE CONVERTIDAS
+    public List<String> getAllConversao(int n){
+        //  n = 0 : somente valores   n = 1 : lista dizere  
+    	List<String> listageral = new ArrayList<>();
+        String naux = "";
+    	for( int i = 0; i < _dados.size(); i++) {
+            // altera destino 
+    		this.setDadosDestino( _dados.get(i));
+        	// converte
+            if( n == 0 ) {
+            	naux = this.dadosFormatadoConverter();
+            }else {
+           		naux = "   "+(i+1) + "  >>>  " + this.getValorConverter() + "  " + this.getDadosOrigem() + 
+                		" convertido para: " + this.dadosFormatadoConverter() + " " + this.getDadosDestino() ;         	
+            }
+        	// grava lista
+            listageral.add(naux);  
+        }
+        return listageral;   
+    
+    }
+    
+    // sobrescritos na classe especificas
+	public List<String> getAllDisponiveis() {
+        List<String> lista = new ArrayList<>();
+		return lista;		
+	}
+
+    
+}

@@ -1,0 +1,6 @@
+package CalcConversorLog;
+
+public interface MemoriaObservador {
+
+	public void valorAlterado(String novoValor);
+}

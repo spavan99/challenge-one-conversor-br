@@ -1,0 +1,28 @@
+package UISwing;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FlowLayout;
+
+
+public class TituloSwing extends JPanel {
+
+    private String titulo = "";
+    private JLabel label;
+    
+	public TituloSwing(String titulo) {
+		this.titulo = titulo;
+		setBackground( new Color(46, 49,50 ));
+		label = new JLabel( this.titulo);
+    	label.setForeground(Color.WHITE);
+    	label.setFont( new Font( "curier", Font.PLAIN, 25 ));     
+		
+    	setLayout( new FlowLayout(FlowLayout.CENTER));
+
+    	add(label);
+	}
+
+	
+}

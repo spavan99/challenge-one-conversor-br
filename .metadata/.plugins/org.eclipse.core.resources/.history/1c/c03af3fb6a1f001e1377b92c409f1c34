@@ -1,0 +1,69 @@
+package UICalcCoonversorSwing;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.border.MatteBorder;
+
+import Conversor.GlobalVars;
+import UISwing.TituloSwing;
+import UISwing.appMenuSwing;
+
+public class CalcConversor extends JFrame {
+	
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+	
+	// contrutor
+	public CalcConversor() {
+		startApp();
+	}
+	
+	private void startApp() {
+
+		System.out.println("calculadora conversor em contrucao");
+		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		//ocultar a barra superios
+		//this.setUndecorated(true);
+		this.setLocationRelativeTo(null);
+		//String ntit = GlobalVars.appTitulo;
+		this.setTitle( gbl.APP_NAME);
+	    this.setSize(720,570);
+	    this.setResizable(false);
+	    //this.setBorder( BorderFactory.createLineBorder(Color.BLACK));
+	    getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
+	    
+	    montaLayout();		
+        this.setVisible(true);
+
+		//Painel meuPainel = new Painel();
+	    //janela.add(meuPainel);
+
+	}
+
+
+
+	private void montaLayout() {
+
+		// set tipo layout
+		setLayout(new BorderLayout());
+
+        //painel esquerda  teclado 
+		CalcTeclado teclado = new CalcTeclado();
+		teclado.setPreferredSize( new Dimension(550, 500));
+        this.add( teclado, BorderLayout.WEST); 
+
+		// painel direta conversore
+        CalcConversores conversor = new CalcConversores();
+		conversor.setPreferredSize( new Dimension(150, 500));
+        this.add( conversor, BorderLayout.EAST); 
+		
+	}
+
+	
+	
+	
+}

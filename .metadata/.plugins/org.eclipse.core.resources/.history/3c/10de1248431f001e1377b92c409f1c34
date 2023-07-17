@@ -1,0 +1,98 @@
+package PadraoConversor;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import Moeda.MoedasTipos;
+import Pesos.PesosTipo;
+
+public class PadraoConversor {
+
+	// moeda base cotacao 1 unidade para todas as demais	
+	//static MoedasTipos moedaBase = MoedasTipos.Dolar; 
+
+	private String dadosOrigem;
+	private String dadosDestino;
+    private double valorConverter;
+    private double valorFinal;
+    private int  nrCasasDecimal = 4;
+	public static List<String> _dados = new ArrayList<>(); 
+	public static List<Double> _cotacaodados = new ArrayList<>(); 
+
+
+    public void setnrCasasDecimal( int valor) {
+    	this.nrCasasDecimal = valor;
+    }
+
+	public void setDadosOrigem( String valor) {
+    	this.dadosOrigem = valor;
+    }
+	
+    public void setDadosDestino( String valor) {
+    	this.dadosDestino = valor;
+    }
+
+    public String getDadosOrigem() {
+    	return this.dadosOrigem;
+    }
+	
+    public String getDadosDestino() {
+    	return this.dadosDestino;
+    }
+
+    public void setvalorConverter( Double valor) {
+    	this.valorConverter = valor;
+    }
+    
+    public Double getValorConverter() {
+    	return this.valorConverter;
+    }
+
+    public Double getValorFinal() {
+    	return this.valorConverter;
+    }
+
+    
+    public String formatarNumero(double valor, int casas) {
+     	String ndecimal = "#,###.";
+    	// acrecenta numero casas decimal
+    	for( int i = 0; i < casas; i++) {
+    		ndecimal = ndecimal + "#";
+    	}
+    	return  new DecimalFormat(ndecimal).format(valor);
+    	
+    }
+    
+    public String dadosFormatadoConverter() {
+    	return (formatarNumero(dadosConverter(), nrCasasDecimal));
+    }
+
+    public Double dadosConverter() {
+        double indOrigem = 0;
+        double indDestino = 0;
+         
+        // pegar a cotaçao       
+        for( int i = 0; i < _dados.size(); i++) {
+        	// origem
+        	if( _dados.get(i).equals(dadosOrigem) ) {
+                indOrigem = _cotacaodados.get(i);        		
+        	}
+           	// destino
+        	if( _dados.get(i).equals(dadosDestino) ) {
+                indDestino = _cotacaodados.get(i);        		
+        	}
+        }
+         this.valorFinal = ((this.valorConverter / indOrigem ) * indDestino);
+         return valorFinal;
+        
+    }
+    
+    // sobrescritos na classe especificas
+	public List<String> getAllDisponiveis() {
+        List<String> lista = new ArrayList<>();
+		return lista;		
+	}
+
+    
+}

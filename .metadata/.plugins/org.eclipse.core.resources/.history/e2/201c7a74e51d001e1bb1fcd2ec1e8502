@@ -1,0 +1,57 @@
+package UISwing;
+
+import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+//import java.awt.*;
+//import javax.swing.*;
+
+public class appConversorSwing extends JFrame {
+
+	// contrutor
+	public appConversorSwing() {
+		startApp();
+	}
+	
+	public void startApp() {
+		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		//ocultar a barra superios
+		//this.setUndecorated(true);
+		//this.setLocationRelativeTo(null);
+	    this.setSize(600,600);
+		
+	    organizarLayout();		
+        this.setVisible(true);
+
+		//Painel meuPainel = new Painel();
+	    //janela.add(meuPainel);
+
+	}	
+	
+	
+	private void organizarLayout() {
+
+		// set tipo layout
+		setLayout(new BorderLayout());
+		
+
+		// criar titulo
+		TituloSwing titulo = new TituloSwing();
+		titulo.setPreferredSize( new Dimension(30, 600));
+        this.add( titulo, BorderLayout.NORTE); 
+
+		// criar menu
+		appMenuSwing menu = new appMenuSwing();
+		menu.setPreferredSize( new Dimension(180, 570));
+        this.add( menu, BorderLayout.WEST); 
+
+		// criar dados
+        appDadosSwing dados = new appDadosSwing();
+		dados.setPreferredSize( new Dimension(420, 570));
+        this.add( dados, BorderLayout.CENTER); 
+		
+	}
+}
+

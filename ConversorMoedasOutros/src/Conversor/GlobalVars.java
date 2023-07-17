@@ -1,0 +1,49 @@
+package Conversor;
+
+import java.awt.Color;
+import java.awt.Font;
+
+public class GlobalVars {
+    // definicao variaveis globais do app
+	public static final String  APP_NAME = "APP: Conversor de dados";
+
+    // cores Swing
+    public static Color COR_ESCURA =  new Color(68,68,68);
+    public static Color COR_CLARA = new Color( 99,99,99);
+    public static Color COR_CONTRASTE = new Color(242,163,60);
+
+
+    // cores calculadora
+    public static Color CALC_COR_ESCURA =  new Color(68,68,68);
+    public static Color CALC_COR_CLARA = new Color( 99,99,99);
+   // public static Color CALC_COR_CONT1 = new Color(136,0,0);
+    public static Color CALC_COR_CONT1 = new Color(136,0,0);
+    public static Color CALC_COR_CONT1MAIS = new Color(249,98,5);
+    //public static Color CALC_COR_CONT1 = new Color(249,98,5);
+    public static Color CALC_COR_CONT2 = new Color(242,163,60);
+    public static Color CALC_COR_CONT3 = new Color(222,80,22);
+
+    //      public static Color COR_DIGITAR = new Color( 128, 128, 128);
+    public static Color COR_DIGITAR = Color.WHITE;
+    
+//   public static Color COR_TITULO = new Color(95,55,153);
+//   public static Color COR_TITULO = new Color(76,44,122);
+    public static Color COR_TITULO = new Color(47,27,76);
+    public static Color COR_RODAPE = new Color(68,68,68);
+
+    public static Color COR_TXTBLACK = Color.BLACK;
+    public static Color COR_TXTWHITE = Color.WHITE;
+
+    public static int TXT_SIZE = 14;
+    public static String TXT_FONTE = "currier";
+    public static int  TXT_STILUS = Font.PLAIN;
+    
+     // veriicar nao usoa apaa
+    public String CALC_SET = "Moedas";
+    
+	public void GlobalVars(){
+		
+	}
+	
+	
+}

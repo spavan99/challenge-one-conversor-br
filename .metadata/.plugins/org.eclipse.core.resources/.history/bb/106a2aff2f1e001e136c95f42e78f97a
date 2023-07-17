@@ -1,0 +1,53 @@
+package UISwing;
+
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+
+public class appMenuSwing extends JPanel implements ActionListener{
+
+	//ActionListener
+	public appMenuSwing() {
+		setBackground(Color.RED);
+		
+		// cria botoes para acessar menu
+		setLayout( new GridLayout(4,1));
+
+       
+		//add( new BotaoSwing("Conversor de Moedas", Color.BLUE));		
+		//add( new BotaoSwing("Calcular IMC"));		
+        //add( new BotaoSwing("Conversor Medidas"));		
+        //add( new BotaoSwing("Conversor Pesos"));		
+
+		adcionaItensMenu( "Conversor de Moedas", Color.BLUE);
+		adcionaItensMenu( "Calcular IMC", null);
+		adcionaItensMenu( "Conversor de Medidas", null);
+		adcionaItensMenu( "Conversor de Pesos", null);
+    	
+        
+	}
+		
+
+    public void adcionaItensMenu(String msg, Color cor) {
+    	BotaoSwing botao = new BotaoSwing( msg, cor);
+    	botao.addActionListener(this);
+    	this.add(botao);
+    	
+    }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if( e.getSource() instanceof JButton) {
+			JButton botao = (JButton) e.getSource();
+			System.out.println(botao.getText());
+		}
+		// TODO Auto-generated method stub
+	}
+	
+
+}

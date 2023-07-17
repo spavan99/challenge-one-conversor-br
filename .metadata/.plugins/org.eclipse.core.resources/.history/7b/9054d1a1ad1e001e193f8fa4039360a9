@@ -1,0 +1,29 @@
+package Conversor;
+
+import java.awt.Color;
+
+public class GlobalVars {
+    // definicao variaveis globais do app
+	public static final String  APP_NAME = "APP: Conversor de dados";
+
+    // cores
+    public Color COR_ESCURA =  new Color(68,68,68);
+    public Color COR_CLARA = new Color( 99,99,99);
+    public Color COR_CONTRATE = new Color(242,163,60);
+    
+    public Color COR_TITULO = new Color(68,68,68);
+    public Color COR_RODAPE = new Color(68,68,68);
+
+    public Color COR_TXTBLACK = Color.BLACK;
+    public Color COR_TXTWHITE = Color.WHITE;
+
+    public int TXT_SIZE = 14;
+    public String TXT_FONTE = "currier";
+    
+    
+	public void GlobalVars(){
+		
+	}
+	
+	
+}

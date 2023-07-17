@@ -1,0 +1,83 @@
+package UIGeral;
+
+import com.google.gson.Gson;
+
+//https://www.delftstack.com/pt/howto/java/convert-json-to-java/
+
+public class teste2{
+    public static void main(String[] args) throws InterruptedException{
+  
+/*/    	
+     String nvar = ""{"USDBRL"
+    		:{"code":"USD","codein":"BRL",
+    		  "name":"Dólar Americano/Real Brasileiro",
+    		  "high":"4.8264",
+    		  "low":"4.7864",
+    		  "varBid":"-0.0006",
+    		  "pctChange":"-0.01",
+    		  "bid":"4.7961",
+    		  "ask":"4.797",
+    		  "timestamp":"1689282000",
+    		  "create_date":"2023-07-13 18:00:00"}
+   		}"";
+
+     String nvar = "{\"USDBRL\":{\"code\":\"USD\",\"codein\":\"BRL\",\"name\":\"Dólar Americano/Real Brasileiro\",\"high\":\"4.8264\",\"low\":\"4.7864\",\"varBid\":\"-0.0006\",\"pctChange\":\"-0.01\",\"bid\":\"4.7961\",\"ask\":\"4.797\",\"timestamp\":\"1689282000\",\"create_date\":\"2023-07-13 18:00:00\"}}\r\n"
+*/      
+     
+    	
+    	String json = "{{"firstName" : "Rohan","lastName" : "Singh","dateOfBirth" : "1990-12-15","address" : "34/Art","city" : "California","contact" : "85652321"}}";
+        
+        Student data = new Gson().fromJson(json, Student.class);
+        System.out.println(data.getFirstName());
+        System.out.println(data.getLastName());
+        System.out.println(data.getCity());
+    }
+}
+
+class Student{
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
+    private String address;
+    private String city;
+    private String contact;
+
+    public String getFirstName() {
+        return firstName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public String getCity() {
+        return city;
+    }
+    public void setCity(String city) {
+        this.city = city;
+    }
+    public String getContact() {
+        return contact;
+    }
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+}
+
+

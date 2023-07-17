@@ -1,0 +1,218 @@
+
+//--------------------------------------------------
+//
+//fazer
+//   resolver o problema funçao retorna list<string>    jtable necessita
+//   de objet [][]
+//
+//
+///---------------------------------------------------------
+
+package UISwing;
+
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.table.TableColumn;
+
+import Conversor.GlobalVars;
+import PadraoConversor.PadraoConversor;
+ 
+ 
+public class RelTelaSwing {
+
+//    JLabel rotulo;
+    JTextArea area;
+    
+    //incia a classer
+    public static void startRelatorio()
+    {
+        // Cria formulario
+        JFrame formulario = new JFrame("Relatorio");
+        //formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // define tamanho do formulario 
+ 
+        
+        // Cria nova instancia da classe
+        RelTelaSwing texto = new RelTelaSwing();
+        // adiciona painel ao formulario
+        formulario.setContentPane(texto.CriaPainel());
+                 
+        // Compacta componetes no formulario e mostra
+        formulario.pack();
+        formulario.setVisible(true);
+    }
+    
+    // Cria painel
+    public Container CriaPainel()
+    {
+        // Cria conteudo da area de texto
+        String conteudo =  "Escreva um texto dentro da caixa de texto \n" +
+                           "Você também pode adicionar novas linhas nesta caixa" +
+                            "Escrevendo no editor e clicando no botão";
+         
+        area = new JTextArea(conteudo);
+        area.setFont(new Font("Serif", Font.BOLD, 12));
+        area.setLineWrap(true);
+        area.setWrapStyleWord(true);
+         
+        // Cria barra de rolagem e adiciona a area de texto
+        JScrollPane scrooll = new JScrollPane(area);
+         
+        // Adiciona valores as propriedades da barra de rolagem
+        // Barra vertical
+        scrooll.setVerticalScrollBarPolicy(
+                        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        
+        // Tamanho da barra
+        scrooll.setPreferredSize(new Dimension(250, 250));
+         
+        // Borda com titulo
+        scrooll.setBorder(
+            BorderFactory.createCompoundBorder(
+                BorderFactory.createCompoundBorder(
+                                BorderFactory.createTitledBorder("RELATORIO DAS CONVERSÕES"),
+                                BorderFactory.createEmptyBorder(5,5,5,5)),
+                                scrooll.getBorder()));
+         
+         
+        // Cria o painel
+        JPanel painel = new  JPanel();
+         
+        // Cria um layout para os componentes
+        painel.setLayout(new BoxLayout(painel,BoxLayout.PAGE_AXIS));
+        painel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+         
+        // Alinha componentes
+        area.setAlignmentX(Component.CENTER_ALIGNMENT);
+         
+        // Adiciona a barra de rolagem pois a area de texto
+        // está já foi adiciona dentro dela logo acima.
+        painel.add(scrooll);
+        painel.add(Box.createVerticalStrut(5));
+                     
+        // Retorna o painel
+        return painel;
+    }   
+     
+     
+ 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}	
+
+
+
+
+/*   OLD -------------------- DEPOIS PENSAR COMO FAZER EM JTABLES
+ *   O PROBLEMA QUE DEU VOU COMO CONVERTE LIST<>  EM ARRAY [][]	
+ */
+	
+/*	
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+	
+	//PadraoConversor dadosconverter = new Moedas();
+	public PadraoConversor nobj; 
+	
+	// Declara componentes  
+    JTable reltabela;
+     
+    // Declara Array e Matriz
+    //String colunas[] =  { "col1", "col2",  "col3", "col4", "col5" };
+    //Object  dados [][] =        
+    //    {           
+    //        {"Nevermind", "Nirvana", "Smell Like Teen Spirit", new Integer(1991), new Boolean (true)},
+    //        {"Ten", "Pearl Jam", "Jeremy", new Integer(1991), new Boolean (true)},
+    //    };
+     
+    String colunas[] =  { "Relatorio das Conversões" };
+    // montar com o retorno  
+    /*
+    Object  dados [][] =
+    		{
+    				{"rel 1"},
+    				{"rel 2"}
+    		};        
+     */
+
+/*	
+	
+	List<String> dados;
+    
+    
+    
+    // contrutor vai alimentar dados
+    public RelTelaSwing(PadraoConversor nObj) {
+        // pegar montar dados
+    	
+    	 dados = nObj.getAllConversao(1);
+    	
+    	
+    }
+    
+ 
+    public void starConfig()
+    {
+        // Cria formulario
+        JFrame formulario = new JFrame("Relatorio de Conversao");
+        //formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         
+        // Instancia classe 
+       // RelTelaSwing tab = new RelTelaSwing();
+        formulario.setContentPane(this.criaPainel());
+         
+        formulario.setSize(500, 300);
+        formulario.setVisible(true);
+    }
+ 
+    
+    public Container criaPainel()
+    {
+        // Cria painel
+        JPanel painel = new JPanel();
+         
+        // Define Layout
+        painel.setLayout(new BoxLayout(painel, BoxLayout.PAGE_AXIS));
+        painel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+        painel.setOpaque(true);
+         
+        // Cria tabela
+        //reltabela = new JTable(dados, colunas);        
+        reltabela = new JTable(); 
+        
+        reltabela.setPreferredScrollableViewportSize(new Dimension(600, 50));
+        // Cria barra de rolagem
+        JScrollPane barrarolagem = new JScrollPane(reltabela);
+        // Adiciona barra ao painel
+        painel.add(barrarolagem);
+        return painel;
+         
+    }
+ */  
+ 

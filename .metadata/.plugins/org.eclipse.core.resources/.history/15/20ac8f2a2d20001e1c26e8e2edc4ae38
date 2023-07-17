@@ -1,0 +1,81 @@
+package CalcConversorLog;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MemoriaCalculo {
+	
+	private enum TipoAcao{
+		ZERAR, CALCULAR, NUMERO, VIRUGLA
+	}
+	
+	
+	private static final MemoriaCalculo instancia = new MemoriaCalculo();
+	
+	private String txtVrOrigem =  "";
+	private String txtVrDestino = "9999";
+
+	private final List<MemoriaObservador> observadores = new ArrayList<>();
+	
+	public static MemoriaCalculo startMemo() {
+		return instancia;
+	}
+	
+	public void adionarObservador( MemoriaObservador observador) {
+	    observadores.add(observador);	
+	}
+	
+    public void processarComando(String valor) {
+   	
+        TipoAcao acaoExecutar = identificarAcao( valor);
+ 
+        if( acaoExecutar == null) {
+        	return;
+        }else if( acaoExecutar == TipoAcao.ZERAR) {
+        	txtVrOrigem =  "0";
+        	txtVrDestino = "0";
+        }else if( acaoExecutar == TipoAcao.NUMERO || acaoExecutar == TipoAcao.VIRUGLA) {
+        	txtVrOrigem += valor;
+        }
+    	System.out.println( acaoExecutar);
+    	
+    	observadores.forEach( o -> o.valorAlterado(getTXTvrOrigem()));
+    }
+	
+	private TipoAcao identificarAcao( String valor) {
+		if( txtVrOrigem.isEmpty() && valor == "0" ) {
+			return null;
+		}
+	
+		try {
+			Integer.parseInt(valor);
+			return TipoAcao.NUMERO;
+		}catch( NumberFormatException e) {
+			// quando nao for numero
+		      if("AC".equals(valor)) {
+		           return TipoAcao.ZERAR;
+     	      }else if( ",".equals(valor) && !txtVrOrigem.equals(",") ) {
+     	    	  System.out.println(",".equals(valor) && !txtVrOrigem.equals(","));
+     	    	  System.out.println( ">>>>>>>>>>>>>>>   " +!txtVrOrigem.equals(","));
+     	           return TipoAcao.VIRUGLA;   
+     	      }else if( "CALCULAR".equals(valor)) {
+     	    	  return TipoAcao.CALCULAR;
+     	   	  }
+ 		}
+	
+	    return null;
+	}
+    
+    
+	public String getTXTvrOrigem() {
+		return txtVrOrigem.isEmpty() ? "0" : txtVrOrigem;
+	}
+	
+	public String getTXTvrDestino() {
+		//return txtVrDestino.isEmpty() ? "0" : txtVrDestino;
+        return "99";	
+	}
+
+	
+}

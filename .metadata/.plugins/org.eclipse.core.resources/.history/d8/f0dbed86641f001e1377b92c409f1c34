@@ -1,0 +1,9 @@
+package UICalcCoonversorSwing;
+
+import Conversor.GlobalVars;
+
+public class CalcTeclado {
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars();
+	
+}

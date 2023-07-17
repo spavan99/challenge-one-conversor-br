@@ -1,0 +1,18 @@
+package UISwing;
+
+import javax.swing.JPanel;
+import java.awt.Color;
+
+
+public class TituloSwing extends JPanel {
+
+    private String titulo = "";
+    
+	public TituloSwing(String titulo) {
+		setBackground(Color.BLUE);
+    	
+        
+	}
+
+	
+}

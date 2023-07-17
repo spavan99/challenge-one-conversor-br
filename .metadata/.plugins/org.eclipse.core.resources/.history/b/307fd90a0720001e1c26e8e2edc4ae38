@@ -1,0 +1,60 @@
+package UICalcCoonversorSwing;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import UIGeral.BotaoGeral;
+
+public class Conversor extends JPanel {
+
+    private Conversor() {
+    	montaConversor(Color.RED);
+    }
+
+    private void montaConversor(Color cor) {
+		List<String> ndadosConversao = new ArrayList();
+		// dados somente para teste busca na classe
+		ndadosConversao.add("DOLAR");
+	  	ndadosConversao.add("EURO");
+	  	ndadosConversao.add("REAL");
+	  	ndadosConversao.add("2DOLAR");
+	  	ndadosConversao.add("3DOLAR");
+	  	ndadosConversao.add("4DOLAR");
+	  	ndadosConversao.add("5DOLAR");
+		ndadosConversao.add("5DOLAR");
+		ndadosConversao.add("5DOLAR");
+		ndadosConversao.add("5DOLAR");
+	  	
+		 // pegar list com os conversores 
+		JPanel panel = new JPanel();
+	    panel.setBackground(cor);
+	    panel.setLayout(null);
+	
+	    JLabel opcaoconversao = new JLabel();
+	    int inicial = 30; 
+	    opcaoconversao.setForeground(Color.WHITE);
+	    opcaoconversao.setText("Set Conversão DE >> PARA");
+	    opcaoconversao.setFont( new Font(gbl.TXT_FONTE, gbl.TXT_STILUS, 14) );
+	    opcaoconversao.setSize(200, inicial);
+	    opcaoconversao.setLocation(10, 5);
+	  	panel.add(opcaoconversao);
+	    
+	    int ilin = 0;
+	    int icol = 0;
+	    for( int i = 0; i < ndadosConversao.size(); i++) {
+	        icol = (i % 2 == 0) ? 20 : 150;
+	    	BotaoGeral nbtn = new BotaoGeral( ndadosConversao.get(i), Color.GREEN);
+	       nbtn.setSize(100, 50);
+	       nbtn.setLocation(icol, ((ilin * 50) + 8) + inicial );
+	       panel.add(nbtn);  
+	       ilin =  icol == 150 ? ilin + 1 : ilin;
+	    }
+		this.add(panel);
+	}
+
+}

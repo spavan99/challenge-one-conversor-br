@@ -1,0 +1,15 @@
+package CalcConversorLog;
+
+import PadraoConversor.PadraoConversor;
+
+public interface SetupObservador {
+
+	// titulo tipo conversor setado
+	// classe do setup  // geral // passar especfica habilitada
+	// setupOrigem    dolar para
+	// setupFinal     euto
+	
+	void valorAlterado(String setupTitulo, PadraoConversor setpOBJ, String setupOrigem, String setupDestino);
+
+	
+}

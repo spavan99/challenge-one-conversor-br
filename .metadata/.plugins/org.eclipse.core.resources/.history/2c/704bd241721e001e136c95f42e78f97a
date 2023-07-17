@@ -1,0 +1,60 @@
+
+package UISwing;
+
+import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+public class appDadosSwing extends JFrame {
+
+    private String settitulo = "App conversor dados";
+	
+    public appDadosSwing() {
+    	 start();
+     }
+	 
+	
+     public appDadosSwing(String titulo) {
+    	 this.settitulo = titulo;
+    	 start();
+    	 
+     }
+	
+	 private void start() {
+
+		    this.setSize(600,400);
+		    organizarLayout();		
+		    this.setVisible(true);
+
+	}	
+		
+	
+		private void organizarLayout() {
+
+			// set tipo layout
+			setLayout(new BorderLayout());
+		
+			TituloSwing titulo = new TituloSwing(settitulo);
+			titulo.setPreferredSize( new Dimension(100, 50));
+	        this.add( titulo, BorderLayout.NORTH); 
+
+
+	        // botoes para calcular e sair etc  -- quero colocar abaixo do titulo estudar
+	        // como fazer talvez utilizar outro estilo layout
+	        TituloSwing titulo2 = new TituloSwing("teste bara");
+		   	titulo2.setPreferredSize( new Dimension(600, 50));
+	        this.add( titulo2, BorderLayout.SOUTH);  
+	        
+	        
+	        // criar dados
+	        DadosPanel dados = new DadosPanel();
+	        dados.setPreferredSize(new Dimension( 600, 150));
+	        this.add(dados, BorderLayout.CENTER);
+			
+		}
+
+     
+	
+}
+

@@ -1,0 +1,14 @@
+package Conversor;
+
+public class GlobalVars {
+
+    // definicao variaveis globais do app
+	static final String  appTitulo = "Conversor de dado";
+    public static String teste = "teste";
+	
+	public static void GlobalVars(){
+		
+	}
+	
+	
+}

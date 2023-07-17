@@ -1,0 +1,70 @@
+
+package UISwing;
+
+import javax.swing.JFrame;
+
+import Conversor.GlobalVars;
+import PadraoConversor.PadraoConversor;
+
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+public class appDadosSwing extends JFrame {
+
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+	
+	private String settitulo = "App conversor dados";
+    private PadraoConversor nobj = null; 
+    
+    public appDadosSwing(PadraoConversor nobj) {
+        this.nobj = nobj;
+    	start();
+     }
+	 
+	
+     public appDadosSwing(PadraoConversor nobj, String titulo) {
+    	 this.nobj = nobj;
+    	 this.settitulo = titulo;
+    	 start();
+    	 
+     }
+	
+	 private void start() {
+	        
+     	    this.setSize(600,170);
+            this.setBackground(gbl.COR_CLARA);
+     	    montaLayout();		
+		    this.setVisible(true);
+
+	}	
+		
+	
+	private void montaLayout() {
+			
+			// set tipo layout
+			setLayout(new BorderLayout());
+
+			// titulos e demosntrar onde esta
+			TituloSwing titulo = new TituloSwing(settitulo, 18);
+			titulo.setPreferredSize( new Dimension(100, 50));
+	        this.add( titulo, BorderLayout.NORTH); 
+
+	        // imput dados
+	        DadosPanel dados = new DadosPanel(this.nobj);
+	        dados.setPreferredSize(new Dimension( 600, 100));
+	        this.add(dados, BorderLayout.CENTER);
+			
+            // rodape  
+			TituloSwing rodape = new TituloSwing("");
+			rodape.setPreferredSize( new Dimension(600, 10));
+	        this.add( rodape, BorderLayout.SOUTH); 
+
+		
+		}
+
+     
+	
+}
+

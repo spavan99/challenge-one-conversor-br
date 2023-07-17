@@ -1,0 +1,75 @@
+package UICalcCoonversorSwing;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import Conversor.GlobalVars;
+import UIGeral.BotaoGeral;
+
+public class CalcDados extends JPanel{
+	
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars();
+	
+	public CalcDados()  {
+		setBackground( gbl.CALC_COR_CLARA);
+		montaLayout();
+		
+		
+		
+	}
+
+    public void montaLayout() {
+    	
+		// set tipo layout
+		setLayout( new GridLayout(1,2));
+
+       // adciona botoes
+		adcionaItensMenu( "Origem", Color.RED);
+		adcionaItensMenu( "Destino", Color.BLUE);
+
+
+		
+    }
+
+    public void adcionaItensMenu(String msg, Color cor) {
+
+        
+    	JPanel panel = new JPanel();
+        panel.setBackground(cor);
+        panel.setLayout(new FlowLayout());
+        
+        
+        JLabel texto = new JLabel();
+    	texto.setForeground(cor);
+    	texto.setText(msg);
+    	//texto.setSize(200, 30);
+    	//texto.setLocation(10, 55);
+    	texto.setFont( new Font(gbl.TXT_FONTE, gbl.TXT_STILUS, 20) );
+        panel.add(texto);
+ 
+        // botal de ac/clleat
+        BotaoGeral btnClear = new BotaoGeral( "AC", gbl.CALC_COR_CONT1);
+        this.add(btnClear);
+         
+        
+       	// adicona o painel
+      	this.add(panel);
+        
+    
+    }
+
+    
+}
+
+
+
+
+

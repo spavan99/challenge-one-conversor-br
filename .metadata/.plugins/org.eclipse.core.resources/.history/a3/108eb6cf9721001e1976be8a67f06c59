@@ -1,0 +1,96 @@
+package CalcConversorLog;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import PadraoConversor.PadraoConversor;
+
+public class MemoriaCalculo {
+	
+	// observador do teclado     
+	//  evento ocorre no teclado  --->   dispara memoria de calculo  ---> avisa do display e este faz a acao
+	// utilizada para todos o eventos do teclado
+	
+	private enum TipoAcao{
+		ZERAR, CALCULAR, NUMERO, VIRUGLA
+	}
+	
+	
+	private static final MemoriaCalculo instancia = new MemoriaCalculo();
+	private String txtVrOrigem =  "";
+	private String txtVrDestino = "";
+
+	private final List<MemoriaObservador> observadores = new ArrayList<>();
+	
+	public static MemoriaCalculo startMemo() {
+		return instancia;
+	}
+	
+	public void adionarObservador( MemoriaObservador observador) {
+	    observadores.add(observador);	
+	}
+	
+    public void processarComando(String valor) {
+	     processarComando( valor, null);
+    }	
+    
+    public void processarComando(String valor, PadraoConversor nobj) {
+   	
+        TipoAcao acaoExecutar = identificarAcao( valor);
+ 
+        if( acaoExecutar == null) {
+        	return;
+        }else if( acaoExecutar == TipoAcao.ZERAR) {
+        	// zera na tela visual
+        	txtVrOrigem =  "";
+        	txtVrDestino = "";
+        	// avisa rotina zerar campos na classe//calculos
+          	SetupCalc.startCalc().processarComando(2, "", "5", nobj);
+        }else if( acaoExecutar == TipoAcao.NUMERO || acaoExecutar == TipoAcao.VIRUGLA) {
+ 
+        	txtVrOrigem += valor;
+           	txtVrDestino += valor;
+            
+        }else {
+            // observado para efetuar o calulo
+        	SetupCalc.startCalc().processarComando(3, "", txtVrOrigem, nobj);        	
+        }
+    	observadores.forEach( o -> o.valorAlterado(getTXTvrOrigem()));
+    }
+	
+	private TipoAcao identificarAcao( String valor) {
+		if( txtVrOrigem.isEmpty() && valor == "0" ) {
+			return null;
+		}
+	
+		try {
+			Integer.parseInt(valor);
+			return TipoAcao.NUMERO;
+		}catch( NumberFormatException e) {
+			// quando nao for numero
+		      if("AC".equals(valor)) {
+		           return TipoAcao.ZERAR;
+     	      }else if( ",".equals(valor) && !txtVrOrigem.contains(",") ) {
+     	           return TipoAcao.VIRUGLA;   
+     	      }else if( "CALCULAR".equals(valor)) {
+     	    	  return TipoAcao.CALCULAR;
+     	   	  }
+ 		}
+	
+	    return null;
+	}
+    
+    
+	public String getTXTvrOrigem() {
+		// dispar atualizar display aux
+		getTXTvrDestino();
+		return txtVrOrigem.isEmpty() ? "0" : txtVrOrigem;
+	}
+	
+	public String getTXTvrDestino() {
+		return txtVrDestino.isEmpty() ? "0" : txtVrDestino;
+	}
+
+	
+}

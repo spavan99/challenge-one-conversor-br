@@ -1,0 +1,38 @@
+package UICalcCoonversorSwing;
+
+import java.awt.Color;
+import javax.swing.JPanel;
+
+import Conversor.GlobalVars;
+import UIGeral.BotaoGeral;
+
+
+public class CalcTeclado extends JPanel {
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars();
+
+	
+	public CalcTeclado()  {
+		setBackground( gbl.CALC_COR_ESCURA);
+		
+		//cria botoes conversore
+		setLayout( new GridLayout(1,5));
+        // adciona botoes
+		adcionaItensMenu( "Exit", gbl.COR_CLARA);
+		adcionaItensMenu( "Moedas", gbl.COR_CLARA);
+		adcionaItensMenu( "IMC", gbl.COR_CONTRASTE);
+		adcionaItensMenu( "Medidas", gbl.COR_CLARA);
+		adcionaItensMenu( "Pesos", gbl.COR_CONTRASTE);
+		
+		
+	}
+
+    public void adcionaItensMenu(String msg, Color cor) {
+    	BotaoGeral botao = new BotaoGeral( msg, cor, 25);
+        //botao.setTamFonte(25);
+        //botao.addActionListener(this);
+    	this.add(botao);
+    	
+    }
+
+}

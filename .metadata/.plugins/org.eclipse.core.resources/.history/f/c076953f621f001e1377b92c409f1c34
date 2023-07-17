@@ -1,0 +1,25 @@
+package UICalcCoonversorSwing;
+
+import Conversor.GlobalVars;
+
+public class CalcConversor {
+	
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+	
+	// contrutor
+	public CalcConversor() {
+		startApp();
+	}
+	
+	private void startApp() {
+
+		System.out.println("calculadora conversor em contrucao");
+		
+	}
+	
+	
+	
+	
+	
+}

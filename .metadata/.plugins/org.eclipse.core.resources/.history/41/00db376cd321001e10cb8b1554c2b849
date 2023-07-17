@@ -1,0 +1,39 @@
+package UIGeral;
+
+
+i
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class teste{
+    static String json = "{\"contacDetails\": {\n" +   //JSON text in the file is written here
+            "            \"firstName\": \"Ram\",\n" +
+            "            \"lastName\": \"Sharma\"\n" +
+            "    },\n" +
+            "    \"phoneNumbers\": [\n" +
+            "            {\n" +
+            "                \"type\": \"home\",\n" +
+            "                \"phone-number\": \"212 888-2365\",\n" +
+            "            }\n" +
+            "    ]" +
+            "}";
+    public static void main(String[] args) {
+        
+        //Make a object 
+        JSONObject ob = new JSONObject(json);
+        
+        //getting first and last name
+        String firstName = ob.getJSONObject("contacDetails").getString("firstName");
+        String lastName = ob.getJSONObject("contacDetails").getString("lastName");
+        System.out.println("FirstName "+firstName);
+        System.out.println("LastName "+lastName);
+        
+        //loop for printing the array as phoneNumber is stored as array.
+        JSONArray arr = obj.getJSONArray("phoneNumbers");
+        for (int i = 0; i < arr.length(); i++) {
+            String post_id = arr.getJSONObject(i).getString("phone-number");
+            System.out.println(post_id);
+        }
+    }
+}

@@ -1,0 +1,48 @@
+package UICalcCoonversorSwing;
+
+import java.awt.Color;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
+import java.awt.Font;
+
+import Conversor.GlobalVars;
+
+public class CalcSet extends JPanel{
+	
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars();
+
+	private String tituloativo = "..tste";
+		
+	public CalcSet()  {
+		setBackground( gbl.CALC_COR_ESCURA);
+		
+		montaLayout();
+		
+		
+	}
+
+    public void montaLayout() {
+
+    	setLayout(null);
+    	//FlowLayout layout = new FlowLayout(); // cria FlowLayout
+        //setLayout( layout ); // configura o layout de frame
+    	
+    	JLabel nTitulo = new  JLabel();
+        nTitulo.setForeground(gbl.COR_TXTWHITE);
+    	nTitulo.setText(tituloativo);
+    	nTitulo.setSize(200, 50);
+        nTitulo.setLocation(50, 50);
+    	nTitulo.setFont( new Font(gbl.TXT_FONTE, gbl.TXT_STILUS, 25) );
+    	
+    	this.add(nTitulo);
+    	//nTitulo.setTitle(this.tituloativo);
+    	
+    	
+    	
+    }
+
+
+}

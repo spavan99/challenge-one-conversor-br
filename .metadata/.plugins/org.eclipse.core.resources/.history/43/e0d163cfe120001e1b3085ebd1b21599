@@ -1,0 +1,33 @@
+package Conversor;
+
+import Calculadora.StartCalc;
+import UICalcCoonversorSwing.CalcStart;
+import UIConsole.appConversorConsole;
+import UISwing.appConversorSwing;
+
+public class Conversor  {
+	
+	//https://meuconversordemedidas.com/comprimento/jarda/milha/1
+  
+	
+    public static void main(String[] args) {
+
+		// aplicacao console
+		//appConversorConsole conversor = new appConversorConsole(); 
+    	//conversor.startApp();
+    	
+		// aplicacao SWING - versao 1.0
+		//appConversorSwing conversor = new appConversorSwing(); 
+        
+		// aplicacao SWING conversor como um calculadora// NAO FUNCIONOU ADEQUADO
+		//CalcStart calculadora = new CalcStart(); 
+
+		// aplicacao SWING calculadora - versao 2
+        StartCalc.getInstance();
+ 
+		
+    }
+ 
+}
+
+

@@ -1,0 +1,68 @@
+package UIGeral;
+
+/// exemplo montar array a partir de uma string de json
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+public class LerJson {
+
+   public static void main(String[] args){
+
+       String jsonString = "{\"USDBRL\":{\"code\":\"USD\",\"codein\":\"BRL\",\"name\":\"Dólar Americano/Real Brasileiro\",\"high\":\"4.8264\",\"low\":\"4.7864\",\"varBid\":\"-0.0006\",\"pctChange\":\"-0.01\",\"bid\":\"4.7961\",\"ask\":\"4.797\",\"timestamp\":\"1689282000\",\"create_date\":\"2023-07-13 18:00:00\"},\"USDCAD\":{\"code\":\"USD\",\"codein\":\"CAD\",\"name\":\"Dólar Americano/Dólar Canadense\",\"high\":\"1.3118\",\"low\":\"1.3108\",\"varBid\":\"0.0006\",\"pctChange\":\"0.04\",\"bid\":\"1.3114\",\"ask\":\"1.3115\",\"timestamp\":\"1689294471\",\"create_date\":\"2023-07-13 21:27:51\"},\"USDEUR\":{\"code\":\"USD\",\"codein\":\"EUR\",\"name\":\"Dólar Americano/Euro\",\"high\":\"0.8916\",\"low\":\"0.8904\",\"varBid\":\"0.0008\",\"pctChange\":\"0.09\",\"bid\":\"0.8915\",\"ask\":\"0.8916\",\"timestamp\":\"1689294374\",\"create_date\":\"2023-07-13 21:26:14\"},\"USDGBP\":{\"code\":\"USD\",\"codein\":\"GBP\",\"name\":\"Dólar Americano/Libra Esterlina\",\"high\":\"0.7622\",\"low\":\"0.761\",\"varBid\":\"0.0009\",\"pctChange\":\"0.12\",\"bid\":\"0.7621\",\"ask\":\"0.7622\",\"timestamp\":\"1689294374\",\"create_date\":\"2023-07-13 21:26:14\"},\"USDARS\":{\"code\":\"USD\",\"codein\":\"ARS\",\"name\":\"Dólar Americano/Peso Argentino\",\"high\":\"264.5753\",\"low\":\"264.2573\",\"varBid\":\"0.0058\",\"pctChange\":\"0\",\"bid\":\"264.3641\",\"ask\":\"264.3741\",\"timestamp\":\"1689294406\",\"create_date\":\"2023-07-13 21:26:46\"},\"USDJPY\":{\"code\":\"USD\",\"codein\":\"JPY\",\"name\":\"Dólar Americano/Iene Japonês\",\"high\":\"138.12\",\"low\":\"137.77\",\"varBid\":\"-0.23\",\"pctChange\":\"-0.17\",\"bid\":\"137.79\",\"ask\":\"137.81\",\"timestamp\":\"1689294473\",\"create_date\":\"2023-07-13 21:27:53\"},\"USDCHF\":{\"code\":\"USD\",\"codein\":\"CHF\",\"name\":\"Dólar Americano/Franco Suíço\",\"high\":\"0.8615\",\"low\":\"0.8585\",\"varBid\":\"0.0007\",\"pctChange\":\"0.08\",\"bid\":\"0.8591\",\"ask\":\"0.8595\",\"timestamp\":\"1689294470\",\"create_date\":\"2023-07-13 21:27:50\"},\"USDAUD\":{\"code\":\"USD\",\"codein\":\"AUD\",\"name\":\"Dólar Americano/Dólar Australiano\",\"high\":\"1.4532\",\"low\":\"1.4507\",\"varBid\":\"0.0015\",\"pctChange\":\"0.1\",\"bid\":\"1.4531\",\"ask\":\"1.4531\",\"timestamp\":\"1689294406\",\"create_date\":\"2023-07-13 21:26:46\"},\"USDCNY\":{\"code\":\"USD\",\"codein\":\"CNY\",\"name\":\"Dólar Americano/Yuan Chinês\",\"high\":\"7.1511\",\"low\":\"7.1509\",\"varBid\":\"-0.0002\",\"pctChange\":\"0\",\"bid\":\"7.1499\",\"ask\":\"7.1519\",\"timestamp\":\"1689294393\",\"create_date\":\"2023-07-13 21:26:33\"},\"USDILS\":{\"code\":\"USD\",\"codein\":\"ILS\",\"name\":\"Dólar Americano/Novo Shekel Israelense\",\"high\":\"3.6149\",\"low\":\"3.6112\",\"varBid\":\"0.0064\",\"pctChange\":\"0.18\",\"bid\":\"3.6093\",\"ask\":\"3.6158\",\"timestamp\":\"1689294472\",\"create_date\":\"2023-07-13 21:27:52\"}}";
+       LerJsonArray( jsonString);
+
+   }	
+	
+    public static void LerJsonArray(String jsonString){
+
+
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
+
+        String[] array = new String[jsonObject.size()];
+        int index = 0;
+
+        for (String key : jsonObject.keySet()) {
+            JsonObject innerObject = jsonObject.get(key).getAsJsonObject();
+            array[index] = innerObject.toString();
+            index++;
+        }
+
+        // Imprime os valores do array
+        for (String elemento : array) {
+            System.out.println(elemento);
+        }
+    
+        for (String line : array) {
+            JsonObject obj = gson.fromJson(line, JsonObject.class);
+
+            String code = obj.get("code").getAsString();
+            String codein = obj.get("codein").getAsString();
+            String name = obj.get("name").getAsString();
+            String high = obj.get("high").getAsString();
+            String low = obj.get("low").getAsString();
+            String varBid = obj.get("varBid").getAsString();
+            String pctChange = obj.get("pctChange").getAsString();
+            String bid = obj.get("bid").getAsString();
+            String ask = obj.get("ask").getAsString();
+            String timestamp = obj.get("timestamp").getAsString();
+            String create_date = obj.get("create_date").getAsString();
+
+            System.out.println("Code: " + code);
+            System.out.println("Codein: " + codein);
+            System.out.println("Name: " + name);
+            System.out.println("High: " + high);
+            System.out.println("Low: " + low);
+            System.out.println("VarBid: " + varBid);
+            System.out.println("PctChange: " + pctChange);
+            System.out.println("Bid: " + bid);
+            System.out.println("Ask: " + ask);
+            System.out.println("Timestamp: " + timestamp);
+            System.out.println("Create Date: " + create_date);
+            System.out.println("------------------------");
+        }
+    
+    }
+}
+

@@ -1,0 +1,9 @@
+package CalcConversorLog;
+
+
+public interface SetupObservador {
+
+	void valorAlterado(String novoValor);
+
+	
+}

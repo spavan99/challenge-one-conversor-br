@@ -1,0 +1,148 @@
+package Moeda;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import com.google.gson.JsonObject;
+
+import MetodoGeral.HttpGetDados;
+//import Metricas.MetricasTipo;
+import PadraoConversor.PadraoConversor;
+import MetodoGeral.ManipulaJson;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+public class Moedas extends PadraoConversor  {
+
+	// moeda base cotacao 1 unidade para todas as demais	
+	static final MoedasTipos moedaBase = MoedasTipos.Dolar; 
+
+	
+    // contrutor	
+    public Moedas() {
+        this(false);
+    	
+    	// vetor com as moedas
+    	//_dados = getAllMoedasDisponiveis();
+     	//_dados = getAllDisponiveis();
+        // cotação base dados internos
+    	//imputCotacao();
+    }
+
+	
+	   // contrutor	
+    public Moedas( boolean hot) {
+
+    	// variaveis atualizar dados
+      	String apiEndereco = "http://economia.awesomeapi.com.br/json/last/";
+    	String apiDados = "USD-BRL,USD-CAD,USD-EUR,USD-GBP,USD-ARS,USD-JPY,USD-CHF,USD-AUD,USD-CNY,USD-ILS,USD-CHF";
+    	int    apiTime = 8;
+    	String dadJson = "";
+    	
+    	if( hot ) {
+    		   int resposta = JOptionPane.showConfirmDialog(null, ""
+    		   		+ "Atualiza Moedas?  Obs: é necessario internet", "Moedas", 
+    		   		JOptionPane.YES_NO_OPTION);
+              if (resposta == JOptionPane.YES_OPTION) {
+            	  	 dadJson = HttpGetDados.HttpGetDados( apiEndereco, apiDados, apiTime);
+ 	    	         if( dadJson.contains("***ERROR300")) {
+	        	      	 System.out.println("erros");
+	        	      	atualizaMoedasPad();
+	        	     }else {
+	        	    	 String[] array = ManipulaJson.retornaArryJson(dadJson);
+	        	         Gson gson = new Gson();
+	        	         for (String line : array) {
+	        	             JsonObject obj = gson.fromJson(line, JsonObject.class);
+
+	        	             String code = obj.get("code").getAsString();
+	        	             String codein = obj.get("codein").getAsString();
+	        	             String name = obj.get("name").getAsString();
+	        	             String high = obj.get("high").getAsString();
+
+	        	             System.out.println("Code: " + code);
+	        	             System.out.println("Codein: " + codein);
+	        	             System.out.println("Name: " + name);
+	        	             System.out.println("High: " + high);
+	        	             
+	        	             _dados.add(codein);
+	        	             _cotacaodados.add(Double.parseDouble(high));
+	        	             
+	        	             
+	        	         }
+	        	    	 System.out.println("importacao com sucesso");
+	        	         // montas attray _dados e _cotaçao com base reposta
+	        	     }
+	             }else {
+	            	 atualizaMoedasPad();
+                  }
+    	}else {
+    		atualizaMoedasPad();
+    	}
+    }
+    
+    
+    private void atualizaMoedasPad() {
+	     _dados = getAllDisponiveis();
+	     imputCotacao();
+    }
+ 	
+    // METODO SOBRESCRITO CLASSA PAI PARA TER SUA ESPECIFICIDADE
+    @Override
+	public List<String> getAllDisponiveis() {
+        List<String> lista = new ArrayList<>();
+		for (MoedasTipos moedas : MoedasTipos.values()) {
+            //System.out.println(moedas.toString());
+			lista.add(moedas.toString().toUpperCase());                   
+	     }
+ 		return lista;		
+	}
+    
+    // metodos
+    // obtem as moedas ativas
+	public static List<String> getAllMoedasDisponiveis() {
+        List<String> lista = new ArrayList<>();
+		for (MoedasTipos moedas : MoedasTipos.values()) {
+            //System.out.println(moedas.toString());
+			lista.add(moedas.toString().toUpperCase());                   
+	     }
+ 		return lista;		
+	}
+	
+    // retorna as moedas disponiveis em um string com |
+	public static String  getStringAllMoedasDisponiveis() {
+		String nret = "|"; 
+		for (MoedasTipos moedas : MoedasTipos.values()) {
+	        nret = nret + moedas + "|";
+	    }
+        return nret.toUpperCase();
+		
+	}
+
+    // cotação da moeda  subtitutir funcao busca internet
+	private void imputCotacao() {
+      
+		for (MoedasTipos dados : MoedasTipos.values()) {
+ 			_cotacaodados.add(dados.getFatorConversao());
+		}
+		
+        /*/
+		// dolar
+	    /*
+		_cotacaodados.add(1.0);
+		//real
+		_cotacaodados.add(4.93);
+		// euro
+		_cotacaodados.add(0.92);
+		// ienw
+		_cotacaodados.add(144.16);
+	    */
+	}
+   
+	
+	
+	
+    
+}

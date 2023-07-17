@@ -1,0 +1,84 @@
+
+package UISwing;
+
+import java.awt.Container;
+import java.awt.Dimension;
+ 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.TableColumn;
+ 
+ 
+public class RelTelaSwing {
+    // Declara componentes  
+    JTable reltabela;
+     
+    // Declara Array e Matriz
+    //String colunas[] =  { "col1", "col2",  "col3", "col4", "col5" };
+    //Object  dados [][] =        
+    //    {           
+    //        {"Nevermind", "Nirvana", "Smell Like Teen Spirit", new Integer(1991), new Boolean (true)},
+    //        {"Ten", "Pearl Jam", "Jeremy", new Integer(1991), new Boolean (true)},
+    //    };
+     
+    String colunas[] =  { "Relatorio das Conversões" };
+    // montar com o retorno  
+    Object  dados [][] =
+    		{
+    				{"rel 1"},
+    				{"rel 2"}
+    		};        
+ 
+    // contrutor vai alimentar dados
+    public RelTelaSwing() {
+        // pegar montar dados
+    	
+    }
+    
+ 
+    public void starConfig()
+    {
+        // Cria formulario
+        JFrame formulario = new JFrame("Relatorio de Conversao");
+        //formulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         
+        // Instancia classe 
+        RelTelaSwing tab = new RelTelaSwing();
+        formulario.setContentPane(tab.criaPainel());
+         
+        formulario.setSize(500, 300);
+        formulario.setVisible(true);
+    }
+ 
+    
+    public Container criaPainel()
+    {
+        // Cria painel
+        JPanel painel = new JPanel();
+         
+        // Define Layout
+        painel.setLayout(new BoxLayout(painel, BoxLayout.PAGE_AXIS));
+        painel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+        painel.setOpaque(true);
+         
+        // Cria tabela
+        reltabela = new JTable(dados, colunas);        
+         
+        reltabela.setPreferredScrollableViewportSize(new Dimension(600, 50));
+        // Cria barra de rolagem
+        JScrollPane barrarolagem = new JScrollPane(reltabela);
+        // Adiciona barra ao painel
+        painel.add(barrarolagem);
+        return painel;
+         
+    }
+     
+ 
+    
+}

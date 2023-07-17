@@ -1,0 +1,83 @@
+package UIGeral;
+
+
+import java.util.ArrayList;
+import java.util.List;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+/***
+ * Manual deserialization example
+ * 
+ * @author RicardoMoya
+ *
+ */
+public class teste {
+
+	
+/*	https://mmarcosab.medium.com/gerando-json-com-jsongenerator-em-java-30063750229b
+ * 
+ * 
+ * https://www.oracle.com/br/technical-resources/articles/java/api-java-to-json.html
+	URL url = new  URL("https://graph.facebook.com/search?q=java&type=post");
+
+	   try (InputStream is = url.openStream();
+	        JsonReader rdr = Json.createReader(is)) {
+	        JsonObject obj = rdr.readObject();
+	        JsonArray results = obj.getJsonArray("data");
+	        for (JsonObject result : results.getValuesAs(JsonObject.class)) {
+	            System.out.print(result.getJsonObject("from").getString("name"));
+	            System.out.print(": ");
+	            System.out.println(result.getString("message", ""));
+	            System.out.println("-----------");
+	        }
+	   }
+	
+*/	
+	
+	
+    public static void main(String[] args) {
+
+        String json1 = "[{\"dorsal\":6," + "\"name\":\"Iniesta\","
+                + "\"demarcation\":[\"Right winger\",\"Midfielder\"],"
+                + "\"team\":\"FC Barcelona\"}]";
+
+        JsonParser parser = new JsonParser();
+
+        // Obtain Array
+        JsonArray gsonArr = parser.parse(json1).getAsJsonArray();
+
+        // for each element of array
+        for (JsonElement obj : gsonArr) {
+
+            // Object of array
+            JsonObject gsonObj = obj.getAsJsonObject();
+
+            // Primitives elements of object
+            int dorsal = gsonObj.get("dorsal").getAsInt();
+            String name = gsonObj.get("name").getAsString();
+            String team = gsonObj.get("team").getAsString();
+
+            // List of primitive elements
+            JsonArray demarcation = gsonObj.get("demarcation").getAsJsonArray();
+            List listDemarcation = new ArrayList();
+            for (JsonElement demarc : demarcation) {
+                listDemarcation.add(demarc.getAsString());
+            }
+
+            
+            for( int i = 0,  i < listDemarcation.size(); i++) {
+            	System.out.println( listDemarcation.get(i));
+            }
+            
+            
+            
+            // Object Constructor
+//            FootballPlayer iniesta = new FootballPlayer(dorsal, name,
+//                    listDemarcation, team);
+//            System.out.println(iniesta);
+        }
+    }
+}

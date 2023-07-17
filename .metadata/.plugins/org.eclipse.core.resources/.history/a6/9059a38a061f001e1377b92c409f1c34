@@ -1,0 +1,22 @@
+package UISwing;
+
+import java.awt.Color;
+
+import javax.swing.JLabel;
+
+import Conversor.GlobalVars;
+
+public class LabelSwing extends JLabel {
+
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+
+	private String padmsg = "";
+	private Color corfundo = gbl.COR_CLARA;
+	private Color cortxt = gbl.COR_TXTWHITE;
+	private int tamfonte = gbl.TXT_SIZE;
+	private String fonte = gbl.TXT_FONTE;
+
+	
+	
+}

@@ -1,0 +1,34 @@
+package UISwing;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+		
+		
+public class BotaoSwing extends JButton {
+	
+	public BotaoSwing(String msg, Color cor, Color cortxt) {
+	     setText( msg == null ? "ok" : msg );
+	     setFont( new Font( "courie", Font.PLAIN, 12 ));     
+		 setOpaque(true);
+		 setBackground(cor);
+		 setForeground( cortxt == null ? Color.BLACK : cortxt);
+		 setBorder( BorderFactory.createLineBorder(Color.BLACK));
+	 
+	}
+	
+	public BotaoSwing(String msg, Color cor) {
+       this( msg, cor, null);
+	}	
+
+	public BotaoSwing(String msg) {
+	       this( msg, null, null);
+		}	
+
+	public BotaoSwing() {
+	       this( null, null, null);
+		}	
+
+}

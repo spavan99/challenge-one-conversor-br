@@ -1,0 +1,48 @@
+package UISwing;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+
+import Conversor.GlobalVars;
+
+public class LabelSwing extends JLabel {
+
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+
+	private String padmsg = "";
+	private Color corfundo = gbl.COR_CLARA;
+	private Color cortxt = gbl.COR_TXTWHITE;
+	private int tamfonte = gbl.TXT_SIZE;
+	private String fonte = gbl.TXT_FONTE;
+    private Color corborda = null;
+	
+	public LabelSwing() {
+		   config();
+	}	
+
+	public LabelSwing( String pmsg) {
+		this.padmsg = pmsg;   
+		config();
+	}	
+
+
+	// metodo
+	private void config() {
+		 this.setText(padmsg);
+	     this.setFont( new Font( fonte, Font.PLAIN, tamfonte ));     
+	     this.setOpaque(true);
+		 if( corfundo != null ) {
+	    	 this.setBackground(corfundo);
+	     }
+	     this.setForeground( cortxt);
+		 if( this.corborda != null) {
+		     this.setBorder( BorderFactory.createLineBorder(corborda));
+		 }
+	}
+
+	
+}

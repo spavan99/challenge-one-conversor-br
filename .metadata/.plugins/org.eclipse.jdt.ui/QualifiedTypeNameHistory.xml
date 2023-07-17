@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="Moeda.Cambio"/>
+    <fullyQualifiedTypeName name="UIConsole.appConversorConsole"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+    <fullyQualifiedTypeName name="UISwing.appConversorSwing"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="javax.swing.GroupLayout"/>
+    <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
+    <fullyQualifiedTypeName name="java.awt.Insets"/>
+    <fullyQualifiedTypeName name="Conversor.GlobalVars"/>
+    <fullyQualifiedTypeName name="javax.swing.BoxLayout"/>
+    <fullyQualifiedTypeName name="UICalcCoonversorSwing.CalcConversor"/>
+    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextField"/>
+    <fullyQualifiedTypeName name="javax.swing.SpringLayout.Constraints"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="Metricas.Metricas"/>
+    <fullyQualifiedTypeName name="CalcConversorLog.SetupObservador"/>
+    <fullyQualifiedTypeName name="IMC.IMC"/>
+    <fullyQualifiedTypeName name="Calculadora.StartCalc"/>
+    <fullyQualifiedTypeName name="UIGeral.BotaoGeral"/>
+    <fullyQualifiedTypeName name="UIGeral.LabelGeral"/>
+    <fullyQualifiedTypeName name="Pesos.Pesos"/>
+    <fullyQualifiedTypeName name="javax.swing.JButton"/>
+    <fullyQualifiedTypeName name="CalcConversorLog.SetupCalc"/>
+    <fullyQualifiedTypeName name="CalcConversorLog.MemoriaCalculo"/>
+    <fullyQualifiedTypeName name="CalcConversorLog.MemoriaObservador"/>
+    <fullyQualifiedTypeName name="MetodoGeral.MetodoGeral"/>
+    <fullyQualifiedTypeName name="Moeda.Moedas"/>
+    <fullyQualifiedTypeName name="PadraoConversor.PadraoConversor"/>
+    <fullyQualifiedTypeName name="java.net.http.HttpRequest"/>
+    <fullyQualifiedTypeName name="java.net.http.HttpClient.Redirect"/>
+    <fullyQualifiedTypeName name="java.net.http.HttpResponse.BodyHandlers"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+    <fullyQualifiedTypeName name="MetodoGeral.ManipulaJson"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+</qualifiedTypeNameHistroy>

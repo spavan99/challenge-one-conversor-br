@@ -1,0 +1,100 @@
+package UISwing;
+
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import Conversor.GlobalVars;
+import Moeda.Moedas;
+import Metricas.Metricas;
+import PadraoConversor.PadraoConversor;
+import Pesos.Pesos;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+
+
+
+public class appMenuSwing extends JPanel implements ActionListener{
+
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars();
+	
+    // crio instancia das classses
+	private Moedas cmoedas;	
+    private Metricas cmetrica; 
+    private Pesos cpeso;
+	private IMC imc;
+	
+	//ActionListener
+	public appMenuSwing() {
+		//setBackground(Color.RED);
+		
+		// cria botoes para acessar menu
+		setLayout( new GridLayout(2,2));
+        // adciona botoes
+		adcionaItensMenu( "Moedas", gbl.COR_CLARA);
+		adcionaItensMenu( "IMC", gbl.COR_CONTRASTE);
+		adcionaItensMenu( "Medidas", gbl.COR_CLARA);
+		adcionaItensMenu( "Pesos", gbl.COR_CONTRASTE);
+		
+	}
+		
+    public void adcionaItensMenu(String msg, Color cor) {
+    	BotaoSwing botao = new BotaoSwing( msg, cor, 25);
+        //botao.setTamFonte(25);
+        botao.addActionListener(this);
+    	this.add(botao);
+    	
+    }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if( e.getSource() instanceof JButton) {
+			JButton botao = (JButton) e.getSource();
+			
+			String txtbotao = botao.getText().toUpperCase();
+			if( txtbotao.contains("MOEDA")){
+				//JOptionPane.showMessageDialog(null, "moedas");
+                cmoedas = new Moedas(); 
+				appDadosSwing moedas = new appDadosSwing( cmoedas, "Conversor de Moedas" );
+				
+				
+			}else if( txtbotao.contains("MEDIDA")) {
+                cmetrica = new Metricas(); 
+				appDadosSwing moedas = new appDadosSwing( cmetrica, "Conversor Medidas" );
+				
+			}else if( txtbotao.contains("PESO")) {
+                cpeso = new Pesos(); 
+				appDadosSwing moedas = new appDadosSwing( cpeso, "Conversor Peso" );
+				
+			}else if( txtbotao.contains("IMC")) {
+                //cpeso = new Pesos(); 
+				//appDadosSwing moedas = new appDadosSwing( cpeso, "Conversor Peso" );
+				JOptionPane.showMessageDialog(null, "IMC");
+
+                imc = new Pesos(); 
+    			appDadosSwing moedas = new appDadosSwing( cpeso, "Conversor Peso" );
+
+				
+				
+				tabela ntab = new tabela();
+                ntab.criaGUI();
+				
+				
+			}else {
+				JOptionPane.showMessageDialog(null, ">>>>>>>  Seleçao Invalida..botao..");
+				//System.out.println(txtbotao);	
+			}
+
+			
+			
+		}
+	}
+	
+
+}

@@ -1,0 +1,67 @@
+package UISwing;
+
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import PadraoConversor.PadraoConversor;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+
+import Moeda.Moedas;
+
+public class appMenuSwing extends JPanel implements ActionListener{
+
+    // crio instancia das classses
+	private Moedas cmoedas;	
+
+	//ActionListener
+	public appMenuSwing() {
+		setBackground(Color.RED);
+		
+		// cria botoes para acessar menu
+		setLayout( new GridLayout(1,4));
+        // adciona botoes
+		adcionaItensMenu( "Conversor de Moedas", Color.BLUE);
+		adcionaItensMenu( "Calcular IMC", Color.GREEN);
+		adcionaItensMenu( "Conversor de Medidas", null);
+		adcionaItensMenu( "Conversor de Pesos", null);
+	}
+		
+
+    public void adcionaItensMenu(String msg, Color cor) {
+    	BotaoSwing botao = new BotaoSwing( msg, cor);
+    	botao.addActionListener(this);
+    	this.add(botao);
+    	
+    }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if( e.getSource() instanceof JButton) {
+			JButton botao = (JButton) e.getSource();
+			
+			String txtbotao = botao.getText().toUpperCase();
+
+			if( txtbotao.contains("MOEDA")){
+				//JOptionPane.showMessageDialog(null, "moedas");
+				appDadosSwing moedas = new appDadosSwing( cmoedas );
+				
+				
+			}else {
+				JOptionPane.showMessageDialog(null, ">>>>>>> " + txtbotao);
+				System.out.println(txtbotao);	
+			}
+
+			
+			
+		}
+	}
+	
+
+}

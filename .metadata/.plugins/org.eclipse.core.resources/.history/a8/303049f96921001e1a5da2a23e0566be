@@ -1,0 +1,24 @@
+package MetodoGeral;
+
+public class MetodoGeral {
+
+	
+	   public static boolean verSoNumeros(String averificar) {
+	    	boolean nret = true;
+
+	    	for( int i = 0;  i < averificar.length(); i++) {
+	    		char c =averificar.charAt(i);
+	      	    if (  ('0' <= c && c <= '9') || (',' == c || c == '.')) {
+	               // e numero ou ponto  ou virgula
+	      	    }else {
+	    	    	nret = false;
+	    	    	break;
+	    	    }
+	    	}
+	    	return nret;
+	    }
+
+	
+	
+	
+}

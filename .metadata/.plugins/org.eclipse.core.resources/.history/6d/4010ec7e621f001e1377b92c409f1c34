@@ -1,0 +1,63 @@
+package UICalcCoonversorSwing;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+
+import Conversor.GlobalVars;
+import UISwing.TituloSwing;
+import UISwing.appMenuSwing;
+
+public class CalcConversor extends JFrame {
+	
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+	
+	// contrutor
+	public CalcConversor() {
+		startApp();
+	}
+	
+	private void startApp() {
+
+		System.out.println("calculadora conversor em contrucao");
+		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		//ocultar a barra superios
+		//this.setUndecorated(true);
+		//this.setLocationRelativeTo(null);
+		//String ntit = GlobalVars.appTitulo;
+		this.setTitle( gbl.APP_NAME);
+	    this.setSize(600,650);
+	    this.setResizable(false);
+		
+	    //montaLayout();		
+        this.setVisible(true);
+
+		//Painel meuPainel = new Painel();
+	    //janela.add(meuPainel);
+
+	}
+	
+	
+/*
+	private void montaLayout() {
+
+		// set tipo layout
+		setLayout(new BorderLayout());
+
+		TituloSwing titulo = new TituloSwing(gbl.APP_NAME, 20);
+		titulo.setPreferredSize( new Dimension(300, 50));
+        this.add( titulo, BorderLayout.NORTH); 
+
+		// criar dados
+        appMenuSwing menu = new appMenuSwing();
+		menu.setPreferredSize( new Dimension(300, 300));
+        this.add( menu, BorderLayout.CENTER); 
+		
+	}
+
+*/	
+	
+	
+}

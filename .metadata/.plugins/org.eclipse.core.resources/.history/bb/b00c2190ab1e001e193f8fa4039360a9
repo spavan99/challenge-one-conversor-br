@@ -1,0 +1,64 @@
+package UISwing;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+
+import Conversor.GlobalVars;
+		
+		
+public class BotaoSwing extends JButton {
+	
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+
+	private String padmsg = "";
+	private Color corfundo = gbl.COR_CLARA;
+	private Color cortxt = gbl.COR_TXTWHITE;
+	private int tamfonte = 14;
+	private String fonte = "courie";
+	
+	
+	public BotaoSwing(String msg, Color corfundo, Color cortxt, int tamfonte, String fonte) {
+           this.padmsg = msg == null ? this.padmsg : msg;
+           this.corfundo =  corfundo == null ? this.corfundo : corfundo;
+           this.cortxt =  cortxt == null ? this.cortxt : cortxt;
+           this.tamfonte = tamfonte == 0 ? this.tamfonte : tamfonte;
+           this.fonte = fonte == null ? this.fonte : fonte;
+		
+	}
+	
+	public BotaoSwing(String msg, Color corfundo) {
+        this.padmsg = msg;
+        this.corfundo = corfundo;
+        config();
+	}	
+
+	public BotaoSwing(String msg) {
+        this.padmsg = msg;
+        config();
+	}	
+
+	public BotaoSwing() {
+        config();
+	}	
+
+	// metodo
+	private void config() {
+		 setText(padmsg);
+	     setFont( new Font( fonte, Font.PLAIN, tamfonte ));     
+		 setOpaque(true);
+         if( corfundo != null ) {
+    		 setBackground(corfundo);
+         }
+		 setForeground( cortxt);
+		 setBorder( BorderFactory.createLineBorder(Color.BLACK));
+         
+		 
+		 
+	}
+	
+	
+}

@@ -1,0 +1,80 @@
+package Calculadora;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import Conversor.GlobalVars;
+
+public class Calculadora extends JFrame {
+
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+
+	// controla instancia de abertura da classe
+	public static Calculadora instance = null;
+
+	//  pegear a clasee criano nova intacia nobj 
+	
+    public static Calculadora getInstance() {
+        if (instance == null)
+            instance = new Calculadora();
+        return instance;
+    }
+
+  
+    
+    // contrutor
+	private Calculadora() {
+		startAPP();
+	}
+	
+	private void startAPP() {
+		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		//ocultar a barra superios
+		//this.setUndecorated(true);
+		this.setSize(550,500);
+		// centraliza tela para funcionar tem atribuir setSize antes		
+		this.setLocationRelativeTo(null);
+		this.setTitle( gbl.APP_NAME);
+	    // possibilita aumentar e diminuir false --> fixa
+	    this.setResizable(false);
+	    
+		montaLayout();		
+        this.setVisible(true);
+
+	}	
+	
+	
+	private void montaLayout() {
+
+		// set tipo layout
+		setLayout(new BorderLayout());
+
+		/*
+		// visor tipo calculo ativo com botao calcular e limpar
+		CalcSet pativo = new CalcSet();
+		pativo.setPreferredSize( new Dimension(largura, this.painelativo));
+        this.add( pativo, BorderLayout.NORTH); 
+		
+		//visor valor original -- nome origem e digitar valor e mostrar
+        // visro valor convertido -- nome comversar dibitar
+		CalcDados pdados = new CalcDados();
+		pdados.setPreferredSize( new Dimension(largura, this.painelcentro));
+        this.add( pdados, BorderLayout.CENTER); 
+		
+		// visor selecao itebes de origem e destino
+		// variar conforme tamanho
+		CalcTpConversao pconversao = new CalcTpConversao();
+		pconversao.setPreferredSize( new Dimension(largura, this.painelconversao));
+        this.add( pconversao, BorderLayout.SOUTH); 
+         
+         // ajustar tela
+          this.pack();
+
+	   */
+	
+	}
+}
+

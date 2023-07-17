@@ -1,0 +1,88 @@
+package Pesos;
+
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import PadraoConversor.PadraoConversor;
+import UIConsole.ImputDados;
+
+public class Pesos extends PadraoConversor  {
+		
+    public PesosTipo eTipo;
+
+    
+	// contrutor	
+    public Pesos() {
+    	// vetor com as moedas
+    	_dados = getAllPesos();
+        // cotação base dados internos
+    	imputCotacao();
+    }
+
+    
+    // METODO SOBRESCRITO CLASSA PAI PARA TER SUA ESPECIFICIDADE
+    @Override
+	public List<String> getAllDisponiveis() {
+        List<String> lista = new ArrayList<>();
+		for (PesosTipo dados : PesosTipo.values()) {
+            //System.out.println(moedas.toString());
+			lista.add(dados.toString().toUpperCase());                   
+	     }
+ 		return lista;		
+	}
+
+    
+    // metodos
+	public static List<String> getAllPesos() {
+        List<String> lista = new ArrayList<>();
+		for (PesosTipo dados : PesosTipo.values()) {
+            //System.out.println(moedas.toString());
+			lista.add(dados.toString().toUpperCase());                   
+	     }
+ 		return lista;		
+	}
+	
+	public static String  getStringAllPesos() {
+		String nret = "|"; 
+		for (PesosTipo dados : PesosTipo.values()) {
+	        nret = nret + dados + "|";
+	    }
+        return nret.toUpperCase();
+		
+	}
+
+    // FATORES DE CONVERSAO DA UNIDADE METRICAS
+	private void imputCotacao() {
+ 		for (PesosTipo dados : PesosTipo.values()) {
+ 			_cotacaodados.add(dados.getFatorConversao());
+		}
+	}
+
+	
+	// RETONA LISTA COM TODAS A UNIDADE DE CONVERTIDAS
+    public List<String> getAllPesoConversao(int n){
+        //  n = 0 : somente valores   n = 1 : lista dizere  
+    	List<String> listageral = new ArrayList<>();
+        String naux = "";
+    	for( int i = 0; i < _dados.size(); i++) {
+            // altera destino 
+    		this.setDadosDestino( _dados.get(i));
+        	// converte
+            if( n == 0 ) {
+            	naux = this.dadosFormatadoConverter();
+            }else {
+           		naux = "   "+(i+1) + "  >>>  " + this.getValorConverter() + "  " + this.getDadosOrigem() + 
+                		" convertido para: " + this.dadosFormatadoConverter() + " " + this.getDadosDestino() ;         	
+            }
+        	// grava lista
+            listageral.add(naux);  
+        }
+        return listageral;   
+    
+    }
+
+	
+	
+}

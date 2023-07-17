@@ -1,0 +1,82 @@
+package MetodoGeral;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+public class ManipulaJson {
+
+	private ManipulaJson() {
+		
+	}
+		
+	public static String[] retornaArryJson(String dados){
+
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(dados, JsonObject.class);
+
+        String[] array = new String[jsonObject.size()];
+        int index = 0;
+
+        for (String key : jsonObject.keySet()) {
+            JsonObject innerObject = jsonObject.get(key).getAsJsonObject();
+            array[index] = innerObject.toString();
+            index++;
+        }
+        return array;        
+	}
+	
+    public static void LerJsonArray(String jsonString){
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
+
+        String[] array = new String[jsonObject.size()];
+        int index = 0;
+
+        for (String key : jsonObject.keySet()) {
+            JsonObject innerObject = jsonObject.get(key).getAsJsonObject();
+            array[index] = innerObject.toString();
+            index++;
+        }
+
+        // Imprime os valores do array
+        for (String elemento : array) {
+            System.out.println(elemento);
+        }
+
+        // imprime elmento separado o array
+        for (String line : array) {
+            JsonObject obj = gson.fromJson(line, JsonObject.class);
+
+            String code = obj.get("code").getAsString();
+            String codein = obj.get("codein").getAsString();
+            String name = obj.get("name").getAsString();
+            String high = obj.get("high").getAsString();
+            String low = obj.get("low").getAsString();
+            String varBid = obj.get("varBid").getAsString();
+            String pctChange = obj.get("pctChange").getAsString();
+            String bid = obj.get("bid").getAsString();
+            String ask = obj.get("ask").getAsString();
+            String timestamp = obj.get("timestamp").getAsString();
+            String create_date = obj.get("create_date").getAsString();
+
+            System.out.println("Code: " + code);
+            System.out.println("Codein: " + codein);
+            System.out.println("Name: " + name);
+            System.out.println("High: " + high);
+            System.out.println("Low: " + low);
+            System.out.println("VarBid: " + varBid);
+            System.out.println("PctChange: " + pctChange);
+            System.out.println("Bid: " + bid);
+            System.out.println("Ask: " + ask);
+            System.out.println("Timestamp: " + timestamp);
+            System.out.println("Create Date: " + create_date);
+            System.out.println("------------------------");
+        }
+    
+    }
+
+
+}

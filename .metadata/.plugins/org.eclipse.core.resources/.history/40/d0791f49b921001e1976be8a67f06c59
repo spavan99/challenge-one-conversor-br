@@ -1,0 +1,90 @@
+
+package UISwing;
+
+import javax.swing.JFrame;
+
+import Conversor.GlobalVars;
+import IMC.IMC;
+import PadraoConversor.PadraoConversor;
+
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+public class appDadosSwing extends JFrame {
+
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars(); 
+	
+	private String settitulo = gbl.APP_NAME;
+    private PadraoConversor nobj = null; 
+    
+    public appDadosSwing(PadraoConversor nobj) {
+        this.nobj = nobj;
+    	start();
+     }
+	 
+	 public appDadosSwing(PadraoConversor nobj, String titulo) {
+    	 this.nobj = nobj;
+    	 this.settitulo = titulo;
+    	 start();
+    	 
+     }
+	
+	 private void start() {
+            this.setTitle(settitulo);
+		 	this.setSize(640,230);
+            this.setBackground(gbl.COR_CLARA);
+     	    montaLayout();		
+		    this.setVisible(true);
+	}	
+		
+	private void montaLayout() {
+			
+			// set tipo layout
+			setLayout(new BorderLayout());
+
+			// titulos e demosntrar onde esta
+			TituloSwing titulo = new TituloSwing(settitulo, 18);
+			titulo.setPreferredSize( new Dimension(100, 50));
+	        this.add( titulo, BorderLayout.NORTH); 
+
+            // oeste  somente layout
+			TituloSwing oeste = new TituloSwing("", gbl.COR_ESCURA);
+			oeste.setPreferredSize( new Dimension(20, 150));
+			this.add( oeste, BorderLayout.WEST); 
+			
+            //----------------------------------------------------------------
+			// imput dados  -  tela 
+	        //----------------------------------------------------------------
+			if( settitulo.contains("IMC")) {
+				System.out.println("ok..................");
+				// mudar a classe
+				IMC cimc = new IMC();
+				IMCPanel dados = new IMCPanel(cimc);
+				dados.setPreferredSize(new Dimension( 600, 150));
+				this.add(dados, BorderLayout.CENTER);
+			}else {
+				DadosPanel dados = new DadosPanel(this.nobj);
+				dados.setPreferredSize(new Dimension( 600, 150));
+				this.add(dados, BorderLayout.CENTER);
+			}
+	        // fim do imput dados-------------------------------------------
+	        
+	        // leste  somente layout
+			TituloSwing leste = new TituloSwing("", gbl.COR_ESCURA);
+			leste.setPreferredSize( new Dimension(20, 150));
+			this.add( leste, BorderLayout.EAST); 
+
+            // rodape  
+			TituloSwing rodape = new TituloSwing("");
+			rodape.setPreferredSize( new Dimension(600, 10));
+			this.add( rodape, BorderLayout.SOUTH); 
+
+		
+		}
+
+     
+	
+}
+

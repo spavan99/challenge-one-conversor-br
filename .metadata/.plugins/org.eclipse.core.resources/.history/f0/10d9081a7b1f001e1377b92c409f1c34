@@ -1,0 +1,69 @@
+package UICalcCoonversorSwing;
+
+import java.awt.Color;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
+import java.awt.Font;
+
+import Conversor.GlobalVars;
+import UIGeral.BotaoGeral;
+
+public class CalcSet extends JPanel{
+	
+	//classe de varaivei globais quando necessario/todos
+	public GlobalVars gbl = new GlobalVars();
+
+	private String tituloativo = "..tste abc dev zzzz";
+
+    // titulo conversos setado
+ 	private JLabel setConversorTXT = new  JLabel();
+    // botao de calcular
+ 	private BotaoGeral btnCalcular;
+    // botao de clear
+ 	private BotaoGeral btnClear;
+
+ 	
+	
+	public CalcSet()  {
+		setBackground( gbl.CALC_COR_ESCURA);
+		
+		montaLayout();
+		
+		
+	}
+
+    public void montaLayout() {
+
+    	setLayout(null);
+    	//FlowLayout layout = new FlowLayout(); // cria FlowLayout
+        //setLayout( layout ); // configura o layout de frame
+    	
+        // titulo conversos setado
+    	setConversorTXT.setForeground(gbl.COR_TXTWHITE);
+    	setConversorTXT.setText(tituloativo);
+    	setConversorTXT.setSize(200, 30);
+    	setConversorTXT.setLocation(5, 3);
+    	setConversorTXT.setFont( new Font(gbl.TXT_FONTE, gbl.TXT_STILUS, 25) );
+    	this.add(setConversorTXT);
+    	//nTitulo.setTitle(this.tituloativo);
+    	
+        // botal de ac/clleat
+        btnCalcular = new BotaoGeral( "AC", gbl.CALC_COR_CONT1);
+        btnCalcular.setSize( 40, 35);
+        btnCalcular.setLocation(350, 5);
+        this.add(btnCalcular);
+ 
+    	
+    	// botal de caluclar
+        btnCalcular = new BotaoGeral( "Calcular", gbl.CALC_COR_CONT1);
+        btnCalcular.setSize( 130, 35);
+        btnCalcular.setLocation(400, 5);
+        this.add(btnCalcular);
+    	
+    	
+    }
+
+
+}

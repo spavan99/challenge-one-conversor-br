@@ -1,0 +1,98 @@
+package CalcConversorLog;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Calculadora.DisplayInfo;
+import MetodoGeral.MetodoGeral;
+import PadraoConversor.PadraoConversor;
+
+public class SetupCalc {
+
+	 
+	// observador do setar origens e destino e o calculo    
+	//  evento ocorre no teclado  --->   dispara setupcalc avias ---> display  este faz a acao e o processo de calculo
+	// utilizada para todos o eventos do teclado
+	
+	// tem uma unica instancia aberta
+	private static final SetupCalc instancia = new SetupCalc();
+	
+    private PadraoConversor nobj;
+	private String setupTitulo = "";
+//	private String setupOrigem = "";
+//	private String setupDestino = "";
+	private PadraoConversor setupObj;
+	
+	private final List<SetupObservador> observadores = new ArrayList<>();
+	
+	public static SetupCalc startCalc() {
+		return instancia;
+	}
+
+	
+	public void adionarObservador( SetupObservador observador) {
+	    observadores.add(observador);	
+	}
+	
+    public void processarComando(int tipo, String titulo, String dePara, PadraoConversor setupOBJ) {
+
+    	// tipo  -->  0 painel da direita  /dados origem
+    	//            1 painela da esquerda // dadis destino
+    	//            3 calcular   recebe valor campo dePara
+
+    	
+    	if( ! titulo.isEmpty()) {
+    		setupTitulo = titulo;
+    	}
+    	
+    	// tipo = 0  diplay origem  --- tipo = 1 display destino -- tipo 3 nao faza configuracao clasee
+    	//atualizo o objeto ativo
+    	if( setupOBJ == null) {
+    	}else {
+    		this.nobj = setupOBJ;
+    	}
+    	
+        // processa dadso necessario
+        if( tipo == 0) {  // origem
+        	nobj.setDadosOrigem(dePara);
+          	System.out.println("setup origem-----> " + nobj.getDadosOrigem());
+
+        }else if( tipo == 1) {  // destino
+        	nobj.setDadosDestino(dePara);
+          	System.out.println("setup destino-----> " + nobj.getDadosDestino());
+
+        }else if( tipo == 3) {
+        	
+        	System.out.println("  vou calcualr kkkkkkkkkk    " +  dePara);
+          	System.out.println("setup origem-----> " + nobj.getDadosOrigem());
+          	System.out.println("setup destino-----> " + nobj.getDadosDestino());
+  
+          	//convertido.setText( nobj.dadosFormatadoConverter());
+            double naux = MetodoGeral.vrDinheiroValido(dePara);
+         	if( naux > 0 ) {
+          		 System.out.println("ANTES origem-----> " + nobj.getValorConverter());
+         		 System.out.println("ANTES converito-----> " + nobj.getValorFinal());
+    
+         		 nobj.setvalorConverter(naux);
+         		 nobj.dadosFormatadoConverter();
+         		 
+         		 System.out.println("valor origem-----> " + nobj.getValorConverter());
+         		 System.out.println("valor converito-----> " + nobj.dadosFormatadoConverter());
+         	
+         	}else if( naux == 0) {
+         		
+         	}else {
+         		
+         	}
+        
+        }
+        
+    	// avisa as demais rotinas sobre o evento;
+      	observadores.forEach( o -> o.setupAlterado(tipo, titulo, dePara, setupOBJ));
+ 
+    }
+
+    
+	
+}
+
